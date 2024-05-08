@@ -1,8 +1,8 @@
 import { useState } from "react";
 
 function ToDoList() {
-  const [todos, setTodos] = useState([]);
-  const [newtodo, setNewTodo] = useState("");
+  const [todos, setTodos] = useState(["Feed the Dog", "Take Out Trash", "Practice Coding"]);
+  const [newTodo, setNewTodo] = useState("");
 
   function handleInputChange(event) {
     setNewTodo(event.target.value)
@@ -10,10 +10,16 @@ function ToDoList() {
 
   function addToDo() {
 
+    if (newTodo.trim() !== "") {
+      setTodos(t => [...t, newTodo]);
+      setNewTodo("");
+    }
   }
 
   function deleteToDo(index) {
-
+    
+    const updatedTodos = todos.filter((_, i) => i !== index);
+    setTodos(updatedTodos); 
   }
 
   function moveToDoUp(index) {
@@ -32,7 +38,7 @@ function ToDoList() {
         <input
           type="text"
           placeholder="Add a Task"
-          value={newtodo}
+          value={newTodo}
           onChange={handleInputChange}
         />
         <button
