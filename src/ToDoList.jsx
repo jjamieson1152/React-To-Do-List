@@ -7,6 +7,7 @@ function ToDoList() {
     "Practice Coding",
   ]);
   const [newTodo, setNewTodo] = useState("");
+  const [favTodo, setFavTodo] = useState([]);
 
   function handleInputChange(event) {
     setNewTodo(event.target.value);
@@ -42,6 +43,10 @@ function ToDoList() {
     }
   }
 
+  function addToFavorite(index) {
+    
+  }
+
   return (
     <div className="to-do-list">
       <h1>To Do List</h1>
@@ -61,6 +66,9 @@ function ToDoList() {
       <ol>
         {todos.map((todo, index) => (
           <li key={index}>
+            <button className="fav-button" onClick={() => addToFavorite(index)}>
+              ❤
+            </button>
             <span className="text">{todo}</span>
             <button className="delete-button" onClick={() => deleteToDo(index)}>
               Delete
