@@ -43,6 +43,7 @@ input[type="text"] {
     border: 2px solid hsl(0, 0%, 80%, 0.5);
     border-radius: 5px;
     color: hsl(0, 0%, 0%, 0.5);
+    margin-bottom: 20px;
 }
 ol {
     padding: 0;
@@ -68,6 +69,17 @@ li {
     font-size: 1.4rem;
     margin-left: 10px;
 }
-.fav-button {
+.fav-button{
+    background-color: rgb(207, 203, 203);
+    border-style: double;
+}
+.fav-button:hover {
     color: red;
+}
+.display-fav-button {
+    background-color: hsl(271, 91%, 67%);
+    margin-top: 40px;
+}
+.display-fav-button:hover {
+    background-color: hsl(271, 75%, 46%);
 }

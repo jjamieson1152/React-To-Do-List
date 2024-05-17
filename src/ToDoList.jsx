@@ -1,13 +1,9 @@
 import { useState } from "react";
 
 function ToDoList() {
-  const [todos, setTodos] = useState([
-    "Feed the Dog",
-    "Take Out Trash",
-    "Practice Coding",
-  ]);
+  const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState("");
-  const [favTodo, setFavTodo] = useState([]);
+  const [favorites, setFavorites] = useState([]);
 
   function handleInputChange(event) {
     setNewTodo(event.target.value);
@@ -43,8 +39,21 @@ function ToDoList() {
     }
   }
 
-  function addToFavorite(index) {
-    
+  function addToFavorites(props) {
+    let array = favorites;
+    let addArray = true;
+
+    array.map((item, key) => {
+      if (item === props) {
+        array.splice(key, 1);
+        addArray = false;
+      }
+    });
+    if (addArray) {
+      array.push(props);
+    }
+    setFavorites([...array]);
+    console.log("added to favorites")
   }
 
   return (
@@ -66,7 +75,7 @@ function ToDoList() {
       <ol>
         {todos.map((todo, index) => (
           <li key={index}>
-            <button className="fav-button" onClick={() => addToFavorite(index)}>
+            <button className="fav-button" onClick={() => addToFavorites(index)}>
               ❤
             </button>
             <span className="text">{todo}</span>
@@ -82,6 +91,11 @@ function ToDoList() {
           </li>
         ))}
       </ol>
+      <div>
+        <button className="display-fav-button">
+          Display Favorites
+        </button>
+      </div>
     </div>
   );
 }
